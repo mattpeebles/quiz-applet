@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Beer Quiz</title>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css"">
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+	<section class="title-container test-box centered">
+		<h1 class="title">BeerFest QuizTest</h1>
+	</section>
+
+
+	<section class ="start-quiz test-box centered">
+		<p>Start Quiz</p>
+	</section>
+
+
+	<section class="test-box tally-section">
+		<p class="tally tally-correct">0 Correct</p>
+		<p class="tally tally-incorrect">0 Incorrect</p>
+	</section>
+	<div class="entire question first">
+		<div class="question-number test-box">Question 1 of 10</div>
+		<form class="test-box individual question">
+			 1. _____ is the world's oldest and most widely consumed 
+			 alcoholic drink.<br>
+			 <div class="test-box multiple-choice incorrect"><input type="radio" name="beverage" value="wine" class="incorrect" checked> <div class="choice">wine</div><br></div>
+			 <div class="test-box multiple-choice correct"><input type="radio" name="beverage" value="beer"> <div class="choice">beer</div><br></div>
+			 <div class="test-box multiple-choice incorrect"><input type="radio" name="beverage" value="mead"> <div class="choice">mead</div><br></div>
+			 <div class="test-box multiple-choice incorrect"><input type="radio" name="beverage" value="vodka"> <div class="choice">vodka</div></div>
+			 <input type="submit" name="next" id="next">
+		</form>
+	</div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="app.js"></script>
+</html>

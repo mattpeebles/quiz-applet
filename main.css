@@ -1,0 +1,68 @@
+/*simple formatting*/
+
+.test-box{
+	border: 1px grey solid;
+}
+
+.centered{
+	text-align: center;
+}
+
+.start-quiz{
+	width: 250px;
+	margin:auto;
+}
+
+.start-quiz:hover{
+	cursor: pointer;
+}
+
+.multiple-choice{
+	float: left;
+	padding: 25px;
+	width: 25%;
+	margin: 10px;
+}
+
+.question {
+	width: 60%;
+	height: 250px;
+	margin: auto;
+	margin-top: 75px;
+	position: relative;
+}
+
+#next{
+	position: absolute;
+	top: 225px;
+	right: 1px;
+	width: 75px;
+}
+
+.tally-section{
+	float: right;
+	margin-right: 50px;
+	width: 100px;
+}
+
+.tally{
+	text-align: center;
+}
+
+.choice{
+	float: right;
+}
+
+/*javascript formatting*/
+
+/*.hidden{
+	display: none;
+}
+
+.incorrect{
+	background-color: red;
+}
+
+.correct{
+	background-color: green;
+}*/
