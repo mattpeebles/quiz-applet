@@ -14,5 +14,6 @@ minus finalized screen which is on pen and paper and will look something like
 				|                 	|
 				|			|
 				|			|
-				|			|							|_______________________|
+				|			|
+				|_______________________|
 
