@@ -3,7 +3,7 @@ High Level Design Quiz Applet
 Actual Requirements
 
 1. Users start on screen where they can click a button to start quiz
-        -research how to have a home screen with a button that initiates the quiz that doesn't require an additional webpage
+        -research how to have a home screen with a button that initiates the quiz that doesn't require an additional webpage - mostly done. seperate into sections, and either replace class or replace section with new html called from a render function.
 	-a variable that includes html for start button
 
 2. 10 MC questions, one displayed each time
@@ -14,6 +14,7 @@ Actual Requirements
 	-research other ways to generete multiple choice questions without using radio buttons that still allows required tags to be placed in them
 	-research how to increment a for loop once per button click. i.e. increment i 1 time each time the next question is submitted	
 	-at least one variable that includes html for the question
+	-research how to take an object and push each key value to a seperate line of html. for instance. have question.answers[0] to radio 1, questoins.answers[1] to radio 2 and so forth. perhaps have within the html variable an incrementer that shows object.key[0] object.key[2] within the html.
 
 3. has a submit/next button that takes user to next question after they answer the current question
 	-research to see how to craft a render function that calls on the question object

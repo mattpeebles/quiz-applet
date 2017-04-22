@@ -13,7 +13,7 @@ start-button: class on div within js-object display that styles the start button
 
 Home Screen Implementation
 	title  first load has distinct class to make it quite big and centered on page. This is contained within a section.
-	start button is located within a div that is within a container.The div with class js-object-dispaly will be replaced by the render functiont as the quiz moves forth i.e. that is replaced with rendered object once it is button is clicked either start, next question, or retake
+	start button is located within a div that is within a container.The container itself will be a permanent part of the page. The div will be the one jquery calls on to replace each time we rerender the page. The div with class js-object-dispaly will be replaced by the render functiont as the quiz moves forth i.e. that is replaced with rendered object once it is button is clicked either start, next question, or retake
 	title classes are then toggled to essentially be a nav bar and remove original class to be displayed throughout the quiz
 
 	on load title is contained with a section with classes title, first-load-title
@@ -21,4 +21,32 @@ Home Screen Implementation
 
 	<section class = "title"><div class = "title first-load-title>BeerFest Quiz Test</div></section>
 	<section class ="container"><div class = "js-object-display start-button">Start Quiz</div></section>
-	 
+	
+
+
+JS
+
+will be split into four distinct sections - state, state modification, dom modification - render, and event modification.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+state will hold my state variable which will be an empty array, my html template for my questions, and my homepage and button template for before and after the quiz.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+state modification will hold a function that alters the question template locally and pushes it to state. function will have at least two arguements (state, question-template)
+	this should satisfy the ability to create each individual question. it will require a for loop that pushes each question one time.
+
+a function that alters the before/after template locally and pushes it to state. will hold at least two arguments (state, before-after-template).
+
+var createQuestion = function(state, question-template)
+	NEED TO RESEARCH HOW TO INITIATE FOR LOOP ONCE PER EVENT - perhaps have counter as a global variable that is incremeneted one time each time the function is called in the event listener section.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dom modification
+
+this section will hold a function that ultimately renders the state into the dom. As such it will require a function that takes at least two arguments (state, class). Class will be the class name of the variable that I intend to replace.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Event listeners
+
+this section will hold functions that listen for the events happening in the page. The start quiz button, the MC selection, the next question button, and the start quiz over button. It is likely that I will be able to combine the function for the start quiz and start quiz over as one function. So I will have at least three functions.
