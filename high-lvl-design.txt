@@ -55,6 +55,8 @@ Logical Chunks
 -home screen
 	solution: unsure
 	implementation: unsure
+		- need to do research on where to place the classes for title, 			either on section or on the div to implement correctly
+
 
 -questions
 	solution: object with questions, answer, and answer choices

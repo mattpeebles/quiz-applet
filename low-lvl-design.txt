@@ -1,26 +1,24 @@
 Low Level Design for Quiz Applet
 
+current classes
+title: class on title
+first-load-title: class on title when it is first loaded to center it on css, toggled off on quiz start
+quiz-title: class on title that is toggled on after quiz is initiated to make it nav bar
 
+container: class on section that holds the quiz questions, the start button, and retake button
 
-Requirements
+js-object-display: class on div contained within the container that will allow replaceWith() function to be called on it and replace it with quiz question or retake button
 
--Users start on screen where they can click a button to start quiz
-	-perhaps the start quiz div has an on, click function which renders the 
-questions object and toggles a hidden class on the div after it's been clicked
+start-button: class on div within js-object display that styles the start button at the beginning of the quiz
 
--10 MC questions, one displayed each time
-	-a question object with a question, right answer, and answers keys
-	-renders only one question at a time by using a for loop through the object
-	-will need a render function that places the object index in an html form with a required clas	
+Home Screen Implementation
+	title  first load has distinct class to make it quite big and centered on page. This is contained within a section.
+	start button is located within a div that is within a container.The div with class js-object-dispaly will be replaced by the render functiont as the quiz moves forth i.e. that is replaced with rendered object once it is button is clicked either start, next question, or retake
+	title classes are then toggled to essentially be a nav bar and remove original class to be displayed throughout the quiz
 
--unable to skip questions
--each question should be numbered so users know where they are
-	a. e.g. 7 out of 10
--users should be able to always see their updated score
-	a. e.g. 7 correct, 1 incorrect
-		-stable object that has correct and incorrect keys with appropriate values
+	on load title is contained with a section with classes title, first-load-title
+	a seperate section is created that has class container which will hold the start button plus questions object and finally end screen, this will be the container that will have the div with class js-object-display that has the replaceWith() function appended to it in all the render functions. http://api.jquery.com/replaceWith/
 
--users should recieve immediate feedback on their answer
-	a. is it correct/incorrect
-	b. if incorrect - correct answer is shown
--after quiz is complete, users should see final score and be able to start a new game.
+	<section class = "title"><div class = "title first-load-title>BeerFest Quiz Test</div></section>
+	<section class ="container"><div class = "js-object-display start-button">Start Quiz</div></section>
+	 
