@@ -50,3 +50,23 @@ Thinkful Additional Requirements
 -use event listeners
 -traverse the DOM
 -manipulate the DOM
+
+Logical Chunks
+-home screen
+	solution: unsure
+	implementation: unsure
+
+-questions
+	solution: object with questions, answer, and answer choices
+	implementation: unsure - requires render function, question var, maybe state var, for loop that loops through object - needs research
+
+-user location
+	solution: unsure
+	implementtation: unsure
+
+-user score
+	solution: unsure
+	implementation: unsure
+
+-end screen
+	solution: unsure
