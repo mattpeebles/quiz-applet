@@ -1,0 +1,52 @@
+High Level Design Quiz Applet
+
+Actual Requirements
+
+-Users start on screen where they can click a button to start quiz
+        -research how to have a home screen with a button that initiates the quiz that doesn't require an additional webpage
+
+-10 MC questions, one displayed each time
+        -a question object with a question, right answer, and answers keys
+        -renders only one question at a time by using a for loop through the object
+        -will need a render function that places the object index in an html form with a required class
+	-research how to crossreference the answer key when user selects a radio button
+	-research other ways to generete multiple choice questions without using radio buttons that still allows required tags to be placed in them
+
+-has a submit/next button that takes user to next question after they answer the current question
+	-research to see how to craft a render function that calls on the question object
+
+-unable to skip questions
+	-research to see if a required class can be added to MC form question. if not research a similar functionality
+
+-each question should be numbered so users know where they are e.g. 7 out of 10
+	-this could be labeled in the object within the key section
+	-alternatively could be an array of it's own that is looped simulataenously with the questions object
+	
+		
+-users should be able to always see their updated score
+        a. e.g. 7 correct, 1 incorrect
+                -stable object that has correct and incorrect keys with appropriate values
+		-values would be updated depeneding on their answer
+		-perhaps an if then loop that focuses on the correct answer and else adds 1 to the incorrect value
+
+-users should recieve immediate feedback on their answer
+	-perhaps have an alert that lets them know they had an incorrect answer and shows the right answer
+	-perhaps have a toggle class function that adds a green box around the correct answer and red box around the selected answer if incorrect - would need an if then statement that calls on the object
+        a. is it correct/incorrect
+        b. if incorrect - correct answer is shown
+
+-after quiz is complete, users should see final score and be able to start a new game.
+	-render the score object on final screen and remove all quiz questions
+	-research how to also rerender the start button as we did in the beginning of the game
+		a. maybe it loops back to the beginning and shows the home screen again, so astart over button rather than a re-take quiz button
+		b. or a button that immediately allows you to start at question one.
+
+
+Thinkful Additional Requirements
+-use objects
+-use arrays
+-use functions
+-use loops
+-use event listeners
+-traverse the DOM
+-manipulate the DOM

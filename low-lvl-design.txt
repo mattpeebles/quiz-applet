@@ -1,0 +1,26 @@
+Low Level Design for Quiz Applet
+
+
+
+Requirements
+
+-Users start on screen where they can click a button to start quiz
+	-perhaps the start quiz div has an on, click function which renders the 
+questions object and toggles a hidden class on the div after it's been clicked
+
+-10 MC questions, one displayed each time
+	-a question object with a question, right answer, and answers keys
+	-renders only one question at a time by using a for loop through the object
+	-will need a render function that places the object index in an html form with a required clas	
+
+-unable to skip questions
+-each question should be numbered so users know where they are
+	a. e.g. 7 out of 10
+-users should be able to always see their updated score
+	a. e.g. 7 correct, 1 incorrect
+		-stable object that has correct and incorrect keys with appropriate values
+
+-users should recieve immediate feedback on their answer
+	a. is it correct/incorrect
+	b. if incorrect - correct answer is shown
+-after quiz is complete, users should see final score and be able to start a new game.
