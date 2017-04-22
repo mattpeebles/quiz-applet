@@ -4,6 +4,7 @@ Actual Requirements
 
 1. Users start on screen where they can click a button to start quiz
         -research how to have a home screen with a button that initiates the quiz that doesn't require an additional webpage
+	-a variable that includes html for start button
 
 2. 10 MC questions, one displayed each time
         -a question object with a question, right answer, and answers keys
@@ -12,6 +13,7 @@ Actual Requirements
 	-research how to crossreference the answer key when user selects a radio button
 	-research other ways to generete multiple choice questions without using radio buttons that still allows required tags to be placed in them
 	-research how to increment a for loop once per button click. i.e. increment i 1 time each time the next question is submitted	
+	-at least one variable that includes html for the question
 
 3. has a submit/next button that takes user to next question after they answer the current question
 	-research to see how to craft a render function that calls on the question object
@@ -41,7 +43,7 @@ Actual Requirements
 	-research how to also rerender the start button as we did in the beginning of the game
 		a. maybe it loops back to the beginning and shows the home screen again, so astart over button rather than a re-take quiz button
 		b. or a button that immediately allows you to start at question one.
-
+	-probably can duplicate the html that is used for the opening screen, just loop back to it and replace the text with score and retake quiz
 
 Thinkful Additional Requirements
 -use objects
