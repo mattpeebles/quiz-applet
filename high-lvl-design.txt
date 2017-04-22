@@ -45,6 +45,12 @@ Actual Requirements
 		a. maybe it loops back to the beginning and shows the home screen again, so astart over button rather than a re-take quiz button
 		b. or a button that immediately allows you to start at question one.
 	-probably can duplicate the html that is used for the opening screen, just loop back to it and replace the text with score and retake quiz
+	-i'd also like to have different messages for the user depending on their core.
+		0-2: let me see your id
+		3-5: probably should let other people buy your beer
+		6-8: you know you're way around a tap room
+		8-10: you're a beer genius
+		-this will probably be a simple if then series where call the correct object and edit the html accordingly
 
 Thinkful Additional Requirements
 -use objects
