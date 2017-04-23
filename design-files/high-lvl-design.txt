@@ -17,6 +17,8 @@ Actual Requirements
 	-research how to increment a for loop once per button click. i.e. increment i 1 time each time the next question is submitted	
 	-at least one variable that includes html for the question
 	-research how to take an object and push each key value to a seperate line of html. for instance. have question.answers[0] to radio 1, questoins.answers[1] to radio 2 and so forth. perhaps have within the html variable an incrementer that shows object.key[0] object.key[2] within the html.
+	-research how to appropriately work with objects again. how to call specific keys and then if the key has an array value how to call an index appropriately: object.keyname[index]
+
 
 3. has a submit/next button that takes user to next question after they answer the current question
 	-research to see how to craft a render function that calls on the question object
@@ -65,7 +67,7 @@ Thinkful Additional Requirements
 
 Logical Chunks
 -home screen
-	solution: unsure
+	solution: almost done - drafted solution for home. merely requires css styling for two classes and a toggle class function that is called on start button click. Start button requires a function that on click calls the first question. Just make start button, next button, and retake button all submit types ona form and bind it to the section that will encase them all. That way it will always work. Have an if class that resets counter to 0 if the retake button is pressed. 
 	implementation: unsure
 		- need to do research on where to place the classes for title, 			either on section or on the div to implement correctly
 
@@ -84,3 +86,11 @@ Logical Chunks
 
 -end screen
 	solution: unsure
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~
+Research
+
+ensuring a radio button is checked before submitting - stackoverflow.com/questions/6116149/radio-button-required-javascript-validation
+	-i could also toggle a class on selection of an <li> rather than creating a radio button form which may be more aesthetically pleasing. the code in the answer would just be changed to check if one of the li's has a checked class. but it would require me to toggle off all of the other classes if they select another one. Or i can do the same thing but still have the form functionality which is what i want by hiding the radio buttons https://www.html5andbeyond.com/html-forms-styling-checkboxes-radio-buttons/

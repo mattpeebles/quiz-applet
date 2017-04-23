@@ -37,6 +37,7 @@ variable for question object - question, answer, answers //answer choices
 
 variable for start and retake quiz - empty html while pushing passing an argument in the function. The html will read something like "<div class=\"initiate quiz\"></div>".
 
+variable counter = 0; //This counter ensures the index is properly transversed. MUST REMEMBER TO RESET COUNTER TO 0 ONCE RETAKE BUTTON IS PRESSED - otherwise quiz will break
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 STATE MANAGEMENT
 
@@ -48,6 +49,15 @@ a function that alters the before/after template locally and pushes it to state.
 
 var createQuestion = function(state, question-template)
 	NEED TO RESEARCH HOW TO INITIATE FOR LOOP ONCE PER EVENT - perhaps have counter as a global variable that is incremeneted one time each time the function is called in the event listener section.
+	-answer: have global variable that increments each time a function that renders a question is called and set that variable as the index for the question object. 
+	-next problem: how to display questions on html. perhaps - have a function that statically calls each option. perhaps create an object within an object to have keys that I call rather than index, though that might make it more complicated.
+	Options:
+	---->	1. answers: ["A. yadda", "B. yadda", "C. yadda", "D. yadda"]
+		2. answers:{A: "yadda",
+			    B: "yadda",
+			    C: "yadda",
+			    D: "yadda",
+	I do not think there are any advantages to using an object in this instance over an array. The array has the advantage of providing the letter for the multiple choice easily when displayed in the DOM. I'll go with option one and write a function that returns a variable with four lines of code that calls each answers index statically as the only thing that will change isn't the answers index but the questions index.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Dom modification
 
@@ -60,6 +70,11 @@ Create button function -
 	return element;
 	}
 
+create next question
+	var question= function(object, itemTemplate){
+		var element = $(itemTemplate);
+		element.find(AGAIN CREATE DISTINCT CLASS PER QUESTION LINE - each class should have a similar name but a number or letter incremented. such as "js-question-A", "js-question-B").txt(questions.answers[0]);//repeat 4 times (inclusive) with the rest of the answer choices
+}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Event listeners
 
