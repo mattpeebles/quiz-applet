@@ -5,6 +5,8 @@ Actual Requirements
 1. Users start on screen where they can click a button to start quiz
         -research how to have a home screen with a button that initiates the quiz that doesn't require an additional webpage - mostly done. seperate into sections, and either replace class or replace section with new html called from a render function.
 	-a variable that includes html for start button
+	-REQUIRES VARIABLE BUTTON
+	-home screen will be static html with adjusted classes
 
 2. 10 MC questions, one displayed each time
         -a question object with a question, right answer, and answers keys

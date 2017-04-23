@@ -29,15 +29,22 @@ JS
 will be split into four distinct sections - state, state modification, dom modification - render, and event modification.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+STATE
 
 state will hold my state variable which will be an empty array, my html template for my questions, and my homepage and button template for before and after the quiz.
 
+variable for question object - question, answer, answers //answer choices
+
+variable for start and retake quiz - empty html while pushing passing an argument in the function. The html will read something like "<div class=\"initiate quiz\"></div>".
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+STATE MANAGEMENT
 
 state modification will hold a function that alters the question template locally and pushes it to state. function will have at least two arguements (state, question-template)
 	this should satisfy the ability to create each individual question. it will require a for loop that pushes each question one time.
 
 a function that alters the before/after template locally and pushes it to state. will hold at least two arguments (state, before-after-template).
+	-this will require me to empty the div before appending the next object index to it.
 
 var createQuestion = function(state, question-template)
 	NEED TO RESEARCH HOW TO INITIATE FOR LOOP ONCE PER EVENT - perhaps have counter as a global variable that is incremeneted one time each time the function is called in the event listener section.
@@ -45,6 +52,13 @@ var createQuestion = function(state, question-template)
 Dom modification
 
 this section will hold a function that ultimately renders the state into the dom. As such it will require a function that takes at least two arguments (state, class). Class will be the class name of the variable that I intend to replace.
+
+Create button function - 
+	var createButton = function(item, itemTemplate){
+		var element = $(itemTemplate);
+		element.find(CREATE DISTINCT CLASS IN VAR TEMPLATE TO CALL ON).txt(item);
+	return element;
+	}
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Event listeners
