@@ -44,7 +44,10 @@ variable for question html template will include a form with all the questions a
 variable for quiz score html template
 
 variable object for score = { correct: 0, incorrect: 0}
-variable array for scoreLevel = ["Show me you're ID", "yadda", "yadda", "yadda"] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+variable array for scoreLevel = ["Show me you're ID", "yadda", "yadda", "yadda"]
+
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 STATE MANAGEMENT
 
 state modification will hold a function that alters the question template locally and pushes it to state. function will have at least two arguements (state, question-template)
