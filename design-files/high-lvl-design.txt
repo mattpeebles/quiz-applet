@@ -93,4 +93,8 @@ Logical Chunks
 Research
 
 ensuring a radio button is checked before submitting - stackoverflow.com/questions/6116149/radio-button-required-javascript-validation
-	-i could also toggle a class on selection of an <li> rather than creating a radio button form which may be more aesthetically pleasing. the code in the answer would just be changed to check if one of the li's has a checked class. but it would require me to toggle off all of the other classes if they select another one. Or i can do the same thing but still have the form functionality which is what i want by hiding the radio buttons https://www.html5andbeyond.com/html-forms-styling-checkboxes-radio-buttons/
+	I can hide the radio buttons and have it highlight the one that is selected https://www.html5andbeyond.com/html-forms-styling-checkboxes-radio-buttons/
+
+inputs can have classes and you can have multiple ones in a form. I'll need to wrap my questions in a form and then wrap that form in a div which will be appended to the section
+http://stackoverflow.com/questions/547821/two-submit-buttons-in-one-form
+https://askthecssguy.com/articles/adding-classes-to-input-tags-as-a-matter-of-course/

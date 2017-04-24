@@ -33,12 +33,18 @@ STATE
 
 state will hold my state variable which will be an empty array, my html template for my questions, and my homepage and button template for before and after the quiz.
 
-variable for question object - question, answer, answers //answer choices
+variable for question object - question, answer, answers, location //answer choices
 
-variable for start and retake quiz - empty html while pushing passing an argument in the function. The html will read something like "<div class=\"initiate quiz\"></div>".
+variable for start and retake quiz html - empty html while pushing passing an argument in the function. The html will read something like "<div class=\"initiate quiz\"></div>".
 
 variable counter = 0; //This counter ensures the index is properly transversed. MUST REMEMBER TO RESET COUNTER TO 0 ONCE RETAKE BUTTON IS PRESSED - otherwise quiz will break
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+variable for question html template will include a form with all the questions and a div to display the question location
+
+variable for quiz score html template
+
+variable object for score = { correct: 0, incorrect: 0}
+variable array for scoreLevel = ["Show me you're ID", "yadda", "yadda", "yadda"] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 STATE MANAGEMENT
 
 state modification will hold a function that alters the question template locally and pushes it to state. function will have at least two arguements (state, question-template)
@@ -63,19 +69,61 @@ Dom modification
 
 this section will hold a function that ultimately renders the state into the dom. As such it will require a function that takes at least two arguments (state, class). Class will be the class name of the variable that I intend to replace.
 
-Create button function - 
+i repeat the empty element function a fair bit and must duplicate the class. it may be easier to add an extra argument in the functions that will be the class that i'm emptying and appending.
+
+
+empty element function - this function will empty the element called
+	var emptyElement - function(element){
+		(element).empty();
+	}
+
+toggle hiddenClass
+	var toggleHidden = function(class){
+		(class).toggleClass("hidden")
+	}
+
+Create button function - this function will replace append to the container the retake button 
 	var createButton = function(item, itemTemplate){
 		var element = $(itemTemplate);
+		emptyElement(class hook for section);
 		element.find(CREATE DISTINCT CLASS IN VAR TEMPLATE TO CALL ON).txt(item);
-	return element;
+		(class hook for section).append(element); //MAYBE APPEND THIS WITHIN THE DISPLAY SCORE SECTION
 	}
+
+Show score function - this function will append to the container the score - this may need to be before create button function. NEED TO RESEARCH WHERE PRECISELY TO APPEND TWO DIFFERENT SECTIONS
+	var displayScore = function(scoreArray, scoreTemplate){
+		emptyElement(class hook for section);
+		var element = $(scoreTemplate);
+		var scorePhrase = "";
+		if(score.correct <= 3){ //do this for all four phrases
+			scorePhrase = scoreLevel[0];
+		}
+		element.find(DISTINCT CLASS IN SCORETEMPLATE).txt("You got" + score.correct + "out of 10.")
+		element.find(DISTINCT CLASS IN SCORETEMPLATE FOR QUOTE).txt(scorePhrase);
+}
+		(class hook for section).append(element);
 
 create next question
 	var question= function(object, itemTemplate){
+		emptyElement(class hook for section)
 		var element = $(itemTemplate);
 		element.find(AGAIN CREATE DISTINCT CLASS PER QUESTION LINE - each class should have a similar name but a number or letter incremented. such as "js-question-A", "js-question-B").txt(questions.answers[0]);//repeat 4 times (inclusive) with the rest of the answer choices
+	(class hook for section).append(element);
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Event listeners
 
 this section will hold functions that listen for the events happening in the page. The start quiz button, the MC selection, the next question button, and the start quiz over button. It is likely that I will be able to combine the function for the start quiz and start quiz over as one function. So I will have at least three functions.
+
+function for handling next question
+	- it must be tied to the section and listen for a click on a specific next question class which will be on the start quiz button, retake quiz button, and next question. the only button that will not have it is the last question.
+
+function for submitting answer choices, displaying correct answer choice, and chosen answer choice //may include a function that toggles on/off a hidden class for the submit answer choice button and the next question button
+
+function for selecting an answer choice //will toggle styling on and off
+
+function for updating score object
+
+function for displaying score
+	-will again be tied to the section and listen for a click on the final question submit button which will have a distinct class
+
