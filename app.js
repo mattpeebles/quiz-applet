@@ -82,12 +82,19 @@ var score = {
 
 var currentAnswer = "\"" + questions[i]["answer"] + "\"";
 
+var scoreDescription = ["Are you sure should be drinking? Show me your ID.", 
+						"Perhaps you should drink something besides beer.",
+						"You sure know your beer!",
+						"Wow! You're a beer genius!"
+						];
+
 //State Management
-var calScore = function(){
+var calScore = function(){ //calculates score depending on user answer
 	var correctId = "#choices-" + questions[i]["answer"];
 	if (isChecked() == true){
 		if(document.getElementById(questions[i]["answer"]).checked){
 			score["Correct"]++;
+			$(correctId).toggleClass("correct")
 		}
 		else{
 			score["Incorrect"]++;
@@ -95,14 +102,15 @@ var calScore = function(){
 		}
 	}
 	else {
-		alert("Please Make a selection")
+		$("#no-answer-alert").show(1000);
+		$("#no-answer-alert").fadeOut(3000);
 	}
 }
 
 
 //DOM Management
 
-var isChecked = function(){
+var isChecked = function(){ //ensures an option is checked
 	var radCheck = document.getElementsByTagName('input');
 		for (var i=0; i < radCheck.length; i++){
 			if (radCheck[i].checked){
@@ -112,7 +120,7 @@ var isChecked = function(){
 		return false;
 }
 
-var clearPage = function(){
+var clearPage = function(){ //removes all elements within the quiz-section
 	$("#question").remove();
 	$("#answer-form").remove();
 	$("#location").remove();
@@ -125,18 +133,16 @@ var displayQuestion = function(){
 			
 			$("#question-container").append("<p id=\"question\">" + questions[i]["question"] + "</p>");
 			$("#location-container").append("<p id=\"location\">" + questions[i]["location"] + "</p>");
+
 			$("#score-container").append(
-				"<div id=\'score\'>" +
-					"<p id=\"score-correct\">Correct: " + score["Correct"] + "</p>" +
-					"<p id=\"score-incorrect\">Incorrect: " + score["Incorrect"] + "</p>" +
-				"</div>"
+					"<p id=\"score\">Correct: " + score["Correct"] + "<br> Incorrect: " + score["Incorrect"] + "</p>"
 			);
 
 			$("#answer-container").append("<form id=\'answer-form\'>");
 
 			for (var a = 0; a < questions[i]["answers"].length; a++){
-				$("#answer-form").append("<div class=\"choices\" id=\"choices-" + a +"\"><input type=\'radio\' name=\'answer-choice\' id=\'" + 
-					a + "'>" + questions[i]["answers"][a] + "<br></div>")
+				$("#answer-form").append('<label class=\"radio-inline\" id=\"choices-' + a +'\"><input type=\'radio\' name=\'answer-choice\' id=\'' + 
+					a + '\' class=\"radio\" value=\'' + a + '\'>' + questions[i]["answers"][a] + '</label>')
 			};
 
 			$("button").before("</form>");
@@ -144,17 +150,36 @@ var displayQuestion = function(){
 };
 
 var displayFinal = function(){
-	$("#question").remove();
-	$(".choices").remove();
-	$("#location").remove();
-	$("#score").remove();
-	
-	$("#score-container").after(
-		"<div id=\'score\'>" +
-			"<p id=\"score-correct\">Correct: " + score["Correct"] + "</p>" +
-			"<p id=\"score-incorrect\">Incorrect: " + score["Incorrect"] + "</p>" +
-		"</div>"
+	clearPage();
+	$("#jumbo-text").empty();
+	$("#scoreDescription").remove();
+	$("#jumbo-text").append(
+		"You answered " + score["Correct"] + " correctly."
 	)
+	if(parseInt(score["Correct"]) <= 2){
+		$(".jumbotron").append(
+		"<p id=\'scoreDescription\'>" + scoreDescription[0] + "</p>"
+		)
+	} 
+	else if(parseInt(score["Correct"]) >= 3 && parseInt(score["Correct"]) <= 5){
+		$(".jumbotron").append(
+		"<p id=\'scoreDescription\'>" + scoreDescription[1] + "</p>"
+		)
+	} 
+	else if(parseInt(score["Correct"]) >= 6 && parseInt(score["Correct"]) <= 8){
+		$(".jumbotron").append(
+		"<p id=\'scoreDescription\'>" + scoreDescription[2] + "</p>"
+		)
+	}
+	else if(parseInt(score["Correct"]) >= 9 && parseInt(score["Correct"]) <= 10){
+		$(".jumbotron").append(
+		"<p id=\'scoreDescription\'>" + scoreDescription[3] + "</p>"
+		)
+	}
+	$("#retake").toggleClass("hidden");
+	$("#quiz-section").toggleClass("hidden")
+	$("#start-title").toggleClass("hidden");
+	$("#score-section").toggleClass("hidden"); 	 	
 };
 
 //Event Listeners
@@ -162,32 +187,23 @@ var displayFinal = function(){
 $("#start").on('click', function(){
 	$("#start").toggleClass("hidden");
 	$('#submit').toggleClass("hidden");
+	$("#start-title").toggleClass("hidden");
+	$("#navbar").toggleClass("hidden");
+	$("#quiz-section").toggleClass("hidden")
+	$("#score-section").toggleClass("hidden")
 	displayQuestion();
 })
 
 $("#submit").on('click', function(){
 	calScore();
-	if(isChecked() == true && i == (questions.length -1)){
+	if(isChecked() == true && i == (questions.length-1)){
 		$('#submit').toggleClass("hidden");
-		$("#final").toggleClass("hidden");
-	}0
-	else if (isChecked() == true){
-		$('#submit').toggleClass("hidden");
-		$("#next").toggleClass("hidden");
+		setTimeout(displayFinal, 2000);
 	}
-})
-
-$("#next").on('click', function(){
-	i++;
-	$('#submit').toggleClass("hidden");
-	$("#next").toggleClass("hidden");
-	displayQuestion();
-})
-
-$("#final").on('click', function(){
-	displayFinal();
-	$("#final").toggleClass("hidden");
-	$("#retake").toggleClass("hidden");
+	else if (isChecked() == true){
+		i++;
+		setTimeout(displayQuestion, 2000);
+	}
 })
 
 $("#retake").on('click', function(){  //resets everything to zero and displays first question
@@ -197,4 +213,7 @@ $("#retake").on('click', function(){  //resets everything to zero and displays f
 	score["Incorrect"] = 0;
 	displayQuestion();
 	$("#submit").toggleClass("hidden");
+	$("#quiz-section").toggleClass("hidden");
+	$("#start-title").toggleClass("hidden");
+	$("#score-section").toggleClass("hidden");
 })

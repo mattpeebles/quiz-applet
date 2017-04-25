@@ -1,10 +1,30 @@
 
-
 /*js toggled classes*/
 .hidden{
 	display: none;
 }
 
 .correct{
-	background-color: blue;
+	background-color: #5cb85c;
+	color: white;
+  font-weight: bold;
+  border-radius: .25em;
+}
+
+#submit{
+	float: right;
+}
+
+#no-answer-alert{
+	clear: both;
+	bottom: 0px;
+	display: none;
+}
+
+.container{
+	max-height: 600px;
+}
+
+#answer-container{
+	display: inline-block;
 }

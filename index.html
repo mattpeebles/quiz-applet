@@ -5,30 +5,68 @@
 	<meta charset="utf-8">
 
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css"">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
 	<link rel="stylesheet" type="text/css" href="main.css">
+
+
 </head>
 <body>
-	<section class="title-container test-box centered">
-		<h1 class="title">BeerFest QuizTest</h1>
-	</section>
-	<section id="quiz-container">
-		<div id="location-container"></div>
-
-		<div id="question-container"></div>
-
-		<div id="answer-container"></div>
-
-		<div id="score-container"></div>
-		<div id ="button-container">
-			<button type="button" id="start">Start Quiz</button>
-			<button type = "button" id="submit" class ="hidden">Submit Answer</button>
-			<button type="button" id="next" class="hidden">Next Question</button>
-			<button type="button" id="final" class="hidden">Final Score</button>
-			<button type="button" id="retake" class="hidden">Retake Quiz?</button>
+	<nav class="navbar navbar-inverse navbar-fixed-top hidden" id="navbar">
+		<div class="container">
+			<div class="navbear-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+          		</button>
+					<a class="navbar-brand" href="#">BeerFest QuizTest</a>			</div>
 		</div>
+	</nav>
+	<section class="container" id="start-title">
+			<div class="jumbotron">
+				<h1 id="jumbo-text">BeerFest QuizTest</h1>
+			</div>
+	</section>
+
+	<section class="container" id="quiz-container">
+		<div class="row"><br><br><br></div> <!-- required for quiz section to display appropriately -->
+
+		<div class="col-12 panel panel-default hidden" id="quiz-section">
+            <div class="panel-heading">
+              	<h3 class="panel-title" id="location-container"></h3>
+            </div>
+			<div class="panel-body" id="question-container"></div>
+            <div class="panel-body" id="answer-container"></div>
+          	<div id ="button-container">
+				<button type="button" id="submit" class="btn btn-info hidden">Submit Answer</button>
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-sm-3 col-md-3 panel panel-info hidden" id="score-section">
+			<div class="panel-heading" id="score-heading">
+				<h4 class="panel-title">Score</h4>
+			</div>
+			<div class="panel-body" id="score-container"></div>
+		</div>
+
+		<div id ="button-container">
+			<button type="button" id="start" class="col-sm-12 btn btn-success">Start Quiz</button>
+			<button type="button" id="retake" class="col-sm-12 btn btn-success hidden">Retake Quiz?</button>
+		</div>
+
+		<div class="alert alert-danger" id="no-answer-alert" role="alert"><strong>Oops!</strong> Please select an answer in order to continue.</div>
 	</section>
 
 </body>
+<!-- Latest compiled and minified JavaScript -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="app.js"></script>
 </html>
