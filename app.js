@@ -112,12 +112,16 @@ var isChecked = function(){
 		return false;
 }
 
+var clearPage = function(){
+	$("#question").remove();
+	$("#answer-form").remove();
+	$("#location").remove();
+	$("#score").remove();
+}
+
 var displayQuestion = function(){
-		if (i < 10){
-			$("#question").remove();
-			$("#answer-form").remove();
-			$("#location").remove();
-			$("#score").remove();
+		if (i < questions.length){
+			clearPage()
 			
 			$("#question-container").append("<p id=\"question\">" + questions[i]["question"] + "</p>");
 			$("#location-container").append("<p id=\"location\">" + questions[i]["location"] + "</p>");
@@ -130,7 +134,7 @@ var displayQuestion = function(){
 
 			$("#answer-container").append("<form id=\'answer-form\'>");
 
-			for (var a = 0; a < 4; a++){
+			for (var a = 0; a < questions[i]["answers"].length; a++){
 				$("#answer-form").append("<div class=\"choices\" id=\"choices-" + a +"\"><input type=\'radio\' name=\'answer-choice\' id=\'" + 
 					a + "'>" + questions[i]["answers"][a] + "<br></div>")
 			};
@@ -163,10 +167,10 @@ $("#start").on('click', function(){
 
 $("#submit").on('click', function(){
 	calScore();
-	if(isChecked() == true && i == 9){
+	if(isChecked() == true && i == (questions.length -1)){
 		$('#submit').toggleClass("hidden");
 		$("#final").toggleClass("hidden");
-	}
+	}0
 	else if (isChecked() == true){
 		$('#submit').toggleClass("hidden");
 		$("#next").toggleClass("hidden");
