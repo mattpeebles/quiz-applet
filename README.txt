@@ -1,19 +1,6 @@
 Quiz applet for Thinkful with a focus on beer
 
-
-initial wireframe completed
-
-minus finalized screen which is on pen and paper and will look something like
-
+JS completed
+HTML completed
+CSS - bootstrap added, responsive, UX mostly completed, overall design could do with some work
  https://mattpeebles.github.io/quiz-applet/ 
-
-
-				_________________________
-				|X correct out of 10    |
-				|you're a beer genius	|
-				|                 	|
-				|			|
-				|			|
-				|			|
-				|_______________________|
-
