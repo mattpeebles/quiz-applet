@@ -25,6 +25,40 @@
 	max-height: 600px;
 }
 
-#answer-container{
-	display: inline-block;
+.jumbotron{
+	text-align: center;
+	background-color: #bc6733;
+	color: white;
+}
+
+#start-title{
+	width: 100%;
+}
+
+hr {
+	width: 5%;
+}
+
+
+#quiz-container{
+	background-color: #3388bc;
+	height: 500px;
+	border-radius: 5px;
+	padding: 5%;
+	position: relative;
+	width: 100%;
+}
+
+button {
+	height: 50px;
+	width: 20%;
+	margin-top: 50px;
+}
+
+#no-answer-alert{
+	bottom: 0%;
+	position: absolute;
+	width: 87%;
+	margin-left: auto;
+	margin-right: auto;
 }

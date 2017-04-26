@@ -73,7 +73,7 @@ var questions = [
 	},
 ];
 
-var i = 0; //question location
+var i = 9; //question location
 
 var score = {
 	Correct: 0,
@@ -135,7 +135,7 @@ var displayQuestion = function(){
 			$("#location-container").append("<p id=\"location\">" + questions[i]["location"] + "</p>");
 
 			$("#score-container").append(
-					"<p id=\"score\">Correct: " + score["Correct"] + "<br> Incorrect: " + score["Incorrect"] + "</p>"
+					"<p id=\"score\">Correct: " + score["Correct"] + " Incorrect: " + score["Incorrect"] + "</p>"
 			);
 
 			$("#answer-container").append("<form id=\'answer-form\'>");
@@ -151,35 +151,30 @@ var displayQuestion = function(){
 
 var displayFinal = function(){
 	clearPage();
-	$("#jumbo-text").empty();
-	$("#scoreDescription").remove();
-	$("#jumbo-text").append(
+	$("#location-container").append(
 		"You answered " + score["Correct"] + " correctly."
 	)
 	if(parseInt(score["Correct"]) <= 2){
-		$(".jumbotron").append(
+		$("#question-container").append(
 		"<p id=\'scoreDescription\'>" + scoreDescription[0] + "</p>"
 		)
 	} 
 	else if(parseInt(score["Correct"]) >= 3 && parseInt(score["Correct"]) <= 5){
-		$(".jumbotron").append(
+		$("#question-container").append(
 		"<p id=\'scoreDescription\'>" + scoreDescription[1] + "</p>"
 		)
 	} 
 	else if(parseInt(score["Correct"]) >= 6 && parseInt(score["Correct"]) <= 8){
-		$(".jumbotron").append(
+		$("#question-container").append(
 		"<p id=\'scoreDescription\'>" + scoreDescription[2] + "</p>"
 		)
 	}
 	else if(parseInt(score["Correct"]) >= 9 && parseInt(score["Correct"]) <= 10){
-		$(".jumbotron").append(
+		$("#question-container").append(
 		"<p id=\'scoreDescription\'>" + scoreDescription[3] + "</p>"
 		)
 	}
 	$("#retake").toggleClass("hidden");
-	$("#quiz-section").toggleClass("hidden")
-	$("#start-title").toggleClass("hidden");
-	$("#score-section").toggleClass("hidden"); 	 	
 };
 
 //Event Listeners
@@ -187,8 +182,6 @@ var displayFinal = function(){
 $("#start").on('click', function(){
 	$("#start").toggleClass("hidden");
 	$('#submit').toggleClass("hidden");
-	$("#start-title").toggleClass("hidden");
-	$("#navbar").toggleClass("hidden");
 	$("#quiz-section").toggleClass("hidden")
 	$("#score-section").toggleClass("hidden")
 	displayQuestion();
@@ -207,13 +200,11 @@ $("#submit").on('click', function(){
 })
 
 $("#retake").on('click', function(){  //resets everything to zero and displays first question
+	$("#location-container").empty();
 	$("#retake").toggleClass("hidden");
 	i = 0;
 	score['Correct'] = 0;
 	score["Incorrect"] = 0;
 	displayQuestion();
 	$("#submit").toggleClass("hidden");
-	$("#quiz-section").toggleClass("hidden");
-	$("#start-title").toggleClass("hidden");
-	$("#score-section").toggleClass("hidden");
 })
