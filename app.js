@@ -73,7 +73,7 @@ var questions = [
 	},
 ];
 
-var i = 9; //question location
+var i = 0; //question location
 
 var score = {
 	Correct: 0,
@@ -201,6 +201,7 @@ $("#submit").on('click', function(){
 
 $("#retake").on('click', function(){  //resets everything to zero and displays first question
 	$("#location-container").empty();
+	$("#question-container").empty();
 	$("#retake").toggleClass("hidden");
 	i = 0;
 	score['Correct'] = 0;
