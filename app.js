@@ -1,6 +1,6 @@
 //State
 
-var questions = [
+const questions = [
 	{
 		question: "1. ____ is the world's oldest and most widely consumed alcoholic drink.",
 		answers: ["A. Wine", "B. Mead", "C. Beer", "D. Vodka"],
@@ -24,8 +24,8 @@ var questions = [
 
 	{
 		question: "4. What does IBU stand for?",
-		answers: ["A. International Beer Unit", "B. Interesting Beer University", 
-					"C. Increase Beer Uptake", "D. International Bittering Unit"],
+		answers: ["A. International Beer Unit", "B. Interesting Beer University",
+			"C. Increase Beer Uptake", "D. International Bittering Unit"],
 		answer: "3",
 		location: "Question 4 out of 10"
 	},
@@ -73,113 +73,103 @@ var questions = [
 	},
 ];
 
-var i = 0; //question location
+let questionNum = 0; //question location
 
-var score = {
+const score = {
 	Correct: 0,
 	Incorrect: 0
 };
 
-var currentAnswer = "\"" + questions[i]["answer"] + "\"";
 
-var scoreDescription = ["Are you sure should be drinking? Show me your ID.", 
-						"Perhaps you should drink something besides beer.",
-						"You sure know your beer!",
-						"Wow! You're a beer genius!"
-						];
+const scoreDescription = [
+	"Are you sure should be drinking? Show me your ID.",
+	"Perhaps you should drink something besides beer.",
+	"You sure know your beer!",
+	"Wow! You're a beer genius!"
+];
 
 //State Management
-var calScore = function(){ //calculates score depending on user answer
-	var correctId = "#choices-" + questions[i]["answer"];
-	if (isChecked() == true){
-		if(document.getElementById(questions[i]["answer"]).checked){
-			score["Correct"]++;
-			$(correctId).toggleClass("correct")
-		}
-		else{
-			score["Incorrect"]++;
-			$(correctId).toggleClass("correct")
-		}
+let calScore = function ()
+{ //calculates score depending on user answer
+	if (!isChecked) return;
+
+	let answer = questions[questionNum]["answer"];
+	var correctId = `#choices-${answer}`;
+	if (document.getElementById(answer).checked)
+	{
+		score.Correct++;
+		$(correctId).toggleClass("correct");
 	}
-	else {
-		$("#no-answer-alert").show(1000);
-		$("#no-answer-alert").fadeOut(3000);
+	else
+	{
+		score.Incorrect++;
+		$(correctId).toggleClass("correct");
 	}
 }
 
 
 //DOM Management
 
-var isChecked = function(){ //ensures an option is checked
-	var radCheck = document.getElementsByTagName('input');
-		for (var i=0; i < radCheck.length; i++){
-			if (radCheck[i].checked){
-				return true;
-			}
-		}
-		return false;
-}
+let isChecked = () => $("input:checked").length == 1;
 
-var clearPage = function(){ //removes all elements within the quiz-section
+let clearPage = function ()
+{ //removes all elements within the quiz-section
 	$("#question").remove();
 	$("#answer-form").remove();
 	$("#location").remove();
 	$("#score").remove();
 }
 
-var displayQuestion = function(){
-		if (i < questions.length){
-			clearPage()
-			
-			$("#question-container").append("<p id=\"question\">" + questions[i]["question"] + "</p>");
-			$("#location-container").append("<p id=\"location\">" + questions[i]["location"] + "</p>");
+let displayQuestion = function ()
+{
+	if (questionNum >= questions.length) return;
 
-			$("#score-container").append(
-					"<p id=\"score\">Correct: " + score["Correct"] + " Incorrect: " + score["Incorrect"] + "</p>"
-			);
+	clearPage()
 
-			$("#answer-container").append("<form id=\'answer-form\'>");
+	let currentQuestion = questions[questionNum];
+	let answers = currentQuestion["answers"];
 
-			for (var a = 0; a < questions[i]["answers"].length; a++){
-				$("#answer-form").append('<label class=\"radio-inline\" id=\"choices-' + a +'\"><input type=\'radio\' name=\'answer-choice\' id=\'' + 
-					a + '\' class=\"radio\" value=\'' + a + '\'>' + questions[i]["answers"][a] + '</label>')
-			};
+	$("#question-container").append(`<p id="question"> ${currentQuestion["question"]}</p>`);
+	$("#location-container").append(`<p id=\"location">${currentQuestion["location"]}</p>`);
 
-			$("button").before("</form>");
-	}
+	$("#score-container").append(`<p id="score">Correct: ${score["Correct"]} Incorrect: ${score["Incorrect"]}</p>`);
+	$("#answer-container").append(`<form id="answer-form">`);
+
+	for (let i = 0; i < answers.length; i++)
+	{
+		let possibleAnswer = answers[i];
+		let html = `<label class="radio-inline" id="choices-${i}">
+						<input type="radio" name="answer-choice" id="${i}" class="radio" value="${i}">
+						${possibleAnswer}
+						</label>`;
+
+		$("#answer-form").append(html);
+	};
+
+	$("button").before("</form>");
 };
 
-var displayFinal = function(){
+let displayFinal = function ()
+{
 	clearPage();
-	$("#location-container").append(
-		"You answered " + score["Correct"] + " correctly."
-	)
-	if(parseInt(score["Correct"]) <= 2){
-		$("#question-container").append(
-		"<p id=\'scoreDescription\'>" + scoreDescription[0] + "</p>"
-		)
-	} 
-	else if(parseInt(score["Correct"]) >= 3 && parseInt(score["Correct"]) <= 5){
-		$("#question-container").append(
-		"<p id=\'scoreDescription\'>" + scoreDescription[1] + "</p>"
-		)
-	} 
-	else if(parseInt(score["Correct"]) >= 6 && parseInt(score["Correct"]) <= 8){
-		$("#question-container").append(
-		"<p id=\'scoreDescription\'>" + scoreDescription[2] + "</p>"
-		)
-	}
-	else if(parseInt(score["Correct"]) >= 9 && parseInt(score["Correct"]) <= 10){
-		$("#question-container").append(
-		"<p id=\'scoreDescription\'>" + scoreDescription[3] + "</p>"
-		)
-	}
+
+	let finalScore = parseInt(score["Correct"]);
+
+	$("#location-container").append(`You answered ${finalScore} correctly.`)
+
+	let desc = finalScore <= 2 ? scoreDescription[0]
+		: finalScore >= 3 && finalScore <= 5 ? scoreDescription[1]
+			: finalScore >= 6 && finalScore <= 8 ? scoreDescription[2]
+				: scoreDescription[3];
+
+	$("#question-container").append(`<p id="scoreDescription">${desc}</p>`)
 	$("#retake").toggleClass("hidden");
 };
 
 //Event Listeners
 
-$("#start").on('click', function(){
+$("#start").on('click', () =>
+{
 	$("#start").toggleClass("hidden");
 	$('#submit').toggleClass("hidden");
 	$("#quiz-section").toggleClass("hidden")
@@ -187,25 +177,37 @@ $("#start").on('click', function(){
 	displayQuestion();
 })
 
-$("#submit").on('click', function(){
+$("#submit").on('click', () =>
+{
+	if (!isChecked())
+	{
+		$("#no-answer-alert").show(1000);
+		$("#no-answer-alert").fadeOut(3000);
+		return;
+	}
+
 	calScore();
-	if(isChecked() == true && i == (questions.length-1)){
+
+	if (questionNum == (questions.length - 1))
+	{
 		$('#submit').toggleClass("hidden");
 		setTimeout(displayFinal, 2000);
 	}
-	else if (isChecked() == true){
-		i++;
+	else
+	{
+		questionNum++;
 		setTimeout(displayQuestion, 2000);
 	}
 })
 
-$("#retake").on('click', function(){  //resets everything to zero and displays first question
+$("#retake").on('click', function ()
+{  //resets everything to zero and displays first question
 	$("#location-container").empty();
 	$("#question-container").empty();
 	$("#retake").toggleClass("hidden");
-	i = 0;
-	score['Correct'] = 0;
-	score["Incorrect"] = 0;
+	questionNum = 0;
+	score.Correct = 0;
+	score.Incorrect = 0;
 	displayQuestion();
 	$("#submit").toggleClass("hidden");
 })
